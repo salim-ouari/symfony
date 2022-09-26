@@ -11,6 +11,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
 {
+    // private $counter = 1;
 
     public function  __construct(private UserPasswordHasherInterface $passwordHasher)
     {
@@ -39,6 +40,8 @@ class UserFixtures extends Fixture
             $article->setDate(\DateTimeImmutable::createFromMutable($faker->dateTime));
             $article->setUser($user);
             $manager->persist($article);
+            // $this->addReference('user_' . $this->counter, $user);
+            // $this->counter++;
 
             $manager->flush();
         }
